@@ -21,11 +21,11 @@
     create_home: false
   tags: [Install, Configure]
 
-- name: Add config 
+- name: Add config
   ansible.builtin.template:
-    src: dante.conf.j2
+    src: danted.conf.j2
     dest: "{{ dante_config }}"
     group: "{{ dante_group }}"
     owner: "{{ dante_user }}"
-    mode: 640
+    mode: "644"
   tags: [Configure]
