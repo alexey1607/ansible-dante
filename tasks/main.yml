@@ -24,7 +24,8 @@
 - name: Add config 
   ansible.builtin.template:
     src: dante.conf.j2
+    dest: "{{ dante_config }}"
     group: "{{ dante_group }}"
-    owner: "{{ dante_user }}" 
-    mode: 0640
+    owner: "{{ dante_user }}"
+    mode: 640
   tags: [Configure]
