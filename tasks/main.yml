@@ -29,3 +29,13 @@
     owner: "{{ dante_user }}"
     mode: "644"
   tags: [Configure]
+  notify:
+    - restart dante
+
+- name: Enable dante systemd service
+  ansible.builtin.systemd:
+    name: danted.service
+    state: started
+    enabled: true
+    masked: false
+  tags: [Configure]
