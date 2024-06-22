@@ -1,0 +1,30 @@
+---
+- name: Install dante-server package
+  ansible.builtin.apt:
+    name: dante-server
+    update_cache: true
+  tags: [Install]
+
+- name: Create group {{ dante_group }}
+  ansible.builtin.group:
+    name: "{{ dante_group }}"
+    system: true
+    state: present
+  tags: [Install, Configure]
+
+- name: Create user {{ dante_user }}
+  ansible.builtin.user:
+    name: "{{ dante_user }}"
+    system: true
+    shell: "/usr/sbin/nologin"
+    group: "{{ dante_group }}"
+    create_home: false
+  tags: [Install, Configure]
+
+- name: Add config 
+  ansible.builtin.template:
+    src: dante.conf.j2
+    group: "{{ dante_group }}"
+    owner: "{{ dante_user }}" 
+    mode: 0640
+  tags: [Configure]

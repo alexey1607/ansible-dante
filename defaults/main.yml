@@ -1,0 +1,10 @@
+---
+dante_user: "dante"
+dante_group: "dante"
+
+dante_config: "/etc/danted.conf"
+dante_logs: "/var/log/sockd.log"
+
+dante_interface: "0.0.0.0"
+dante_port: "1080"
+
