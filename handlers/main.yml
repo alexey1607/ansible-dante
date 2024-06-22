@@ -1,5 +1,5 @@
 ---
-- name: Restart dante service
+- name: Restart dante
   ansible.builtin.systemd:
     name: dante-server.service
     state: restarted
