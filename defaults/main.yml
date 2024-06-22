@@ -7,4 +7,3 @@ dante_logs: "/var/log/sockd.log"
 
 dante_interface: "0.0.0.0"
 dante_port: "1080"
-

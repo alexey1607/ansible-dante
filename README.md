@@ -1,31 +1,59 @@
-Role Name
+Dante
 =========
 
-A brief description of the role goes here.
+Dante socks proxy server https://www.inet.no/dante/
 
-Requirements
-------------
+Installation
+--------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+```yaml
+- src: git@github.com:alexey1607/ansible-dante.git
+  scm: git
+  version: master
+  name: dante
+```
 
 Role Variables
 --------------
+### dante_user
+- Dante user
+- Default value: *dante*
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### dante_group
+- Dante group
+- Default value: *dante*
 
-Dependencies
+### dante_config
+- Dante config path
+- Default value: */etc/danted.conf*
+
+### dante_logs
+- Dante logs path
+- Default value: */var/log/sockd.log*
+
+### dante_interface
+- Dante interface
+- Default value: *0.0.0.0*
+
+### dante_port
+- Dante port
+- Default value: *1080*
+
+Requirements
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* Debian
+  - 9 (stretch)
+  - 10 (buster)
+  - 11 (bullseye)
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
+- name: Install dante-server
+  hosts: helsinki
+  roles:
+    - dante
+```
 
 License
 -------
@@ -35,4 +63,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Alexey1607
