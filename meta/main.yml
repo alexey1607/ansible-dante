@@ -1,8 +1,9 @@
+---
 galaxy_info:
   author: alexey1607
   description: Install dante
   company: alexey1607
-  license: license (GPL-2.0-or-later, MIT, etc)
-  min_ansible_version: 2.1
-  galaxy_tags: []
+  license: license GPL-2.0
+  min_ansible_version: "2.1"
+  galaxy_tags: [proxy, dante, socks, socks4, socks5]
 dependencies: []

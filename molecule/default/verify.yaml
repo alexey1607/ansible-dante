@@ -1,0 +1,9 @@
+# ---
+# - name: Verify
+#   hosts: all
+#   tasks:
+#     - name: Check if <some service> is running
+#       ansible.builtin.service:
+#         name: <service_name>
+#         state: started
+#       check_mode: no
