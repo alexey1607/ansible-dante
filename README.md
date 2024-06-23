@@ -29,7 +29,7 @@ Role Variables
 
 ### dante_logs
 - Dante logs path
-- Default value: */var/log/sockd.log*
+- Default value: */var/log/dante.log*
 
 ### dante_interface
 - Dante interface
