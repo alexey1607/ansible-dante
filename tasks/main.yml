@@ -24,10 +24,10 @@
 - name: Create logs file
   ansible.builtin.file:
     path: "{{ dante_logs }}"
-    state: file
+    state: touch
     owner: "{{ dante_user }}"
     group: "{{ dante_group }}"
-    mode: "644"
+    mode: "755"
   tags: [Install, Configure]
 
 - name: Add config
