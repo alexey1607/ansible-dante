@@ -21,6 +21,15 @@
     create_home: false
   tags: [Install, Configure]
 
+- name: Create logs file
+  ansible.builtin.file:
+    path: "{{ dante_logs }}"
+    state: file
+    owner: "{{ dante_user }}"
+    group: "{{ dante_group }}"
+    mode: "644"
+  tags: [Install, Configure]
+
 - name: Add config
   ansible.builtin.template:
     src: danted.conf.j2
