@@ -22,4 +22,4 @@ jobs:
           pip install ansible molecule "molecule-plugins[docker]" docker
 
       - name: Run Molecule tests
-        run: molecule test
+        run: molecule test --debug
