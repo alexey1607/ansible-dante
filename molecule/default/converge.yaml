@@ -3,5 +3,5 @@
   hosts: all
   gather_facts: true
   roles:
-    - role: ../../
-      name: ansible-dante
+    - name: ansible-dante
+      role: /home/runner/work/ansible-dante/ansible-dante
