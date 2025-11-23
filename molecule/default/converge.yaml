@@ -4,4 +4,4 @@
   gather_facts: true
   roles:
     - name: ansible-dante
-      role: /home/runner/work/ansible-dante/ansible-dante
+      role: /home/runner/work/ansible-dante
