@@ -1,9 +1,32 @@
-# ---
-# - name: Verify
-#   hosts: all
-#   tasks:
-#     - name: Check if <some service> is running
-#       ansible.builtin.service:
-#         name: <service_name>
-#         state: started
-#       check_mode: no
+---
+- name: Verify dante installation
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: Check that systemd is running
+      ansible.builtin.command: systemctl is-system-running
+      register: systemd_status
+      changed_when: false
+
+    - name: Show systemd status
+      ansible.builtin.debug:
+        var: systemd_status.stdout
+
+    - name: Check that Dante is installed
+      ansible.builtin.command: which sockd
+      register: sockd_path
+      changed_when: false
+
+    - name: Dante binary location
+      ansible.builtin.debug:
+        var: sockd_path.stdout
+
+    - name: Check Dante config
+      ansible.builtin.stat:
+        path: /etc/danted.conf
+      register: danted_conf
+
+    - name: Print config status
+      ansible.builtin.debug:
+        var: danted_conf
