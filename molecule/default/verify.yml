@@ -11,3 +11,9 @@
       debug:
         var: ansible_facts.services
 
+    - name: Ensure danted.service exists
+      ansible.builtin.assert:
+        that:
+          - "'danted.service' in ansible_facts.services"
+        fail_msg: "danted.service not found"
+        success_msg: "danted.service found"
