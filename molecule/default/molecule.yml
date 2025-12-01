@@ -1,18 +1,16 @@
----
 driver:
   name: docker
 
 platforms:
-  - name: dante-debian12
+  - name: debian12
     image: alexey1607/systemd:debian12
     privileged: true
     cgroupns_mode: host
-    command: /sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    stop_signal: SIGRTMIN+3
     capabilities:
       - SYS_ADMIN
-    stop_signal: SIGRTMIN+3
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
 provisioner:
   name: ansible

@@ -1,0 +1,13 @@
+---
+- name: Verify dante installation
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: Gather service facts
+      ansible.builtin.service_facts:
+
+    - name: Display Dante service state
+      debug:
+        var: ansible_facts.services
+
