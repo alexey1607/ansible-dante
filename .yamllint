@@ -5,6 +5,9 @@ rules:
   brackets:
     max-spaces-inside: 1
     level: error
-  line-length: disable
+  line-length: enable
   truthy:
     check-keys: false
+
+ignore:
+  - .venv

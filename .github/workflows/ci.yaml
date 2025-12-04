@@ -19,7 +19,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-pip
           pip install --upgrade pip
-          pip install ansible-core ansible pytest testinfra molecule "molecule-plugins[docker]" docker
+          pip install -r requirements.txt
 
       - name: Run Molecule tests
         run: |
