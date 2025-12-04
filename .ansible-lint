@@ -1,0 +1,9 @@
+---
+exclude_paths:
+  - meta/preferences.yml
+  - molecule/default/prepare.yml
+  - molecule/default/converge.yml
+  - molecule/default/verify.yml
+  - .cache
+  - .github
+  - .vscode

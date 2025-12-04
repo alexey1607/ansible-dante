@@ -7,10 +7,6 @@
     - name: Gather service facts
       ansible.builtin.service_facts:
 
-    - name: Display Dante service state
-      debug:
-        var: ansible_facts.services
-
     - name: Ensure danted.service exists
       ansible.builtin.assert:
         that:

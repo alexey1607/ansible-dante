@@ -21,7 +21,7 @@
     create_home: false
   tags: [Install, Configure]
 
-- name: Create logs file (idempotent)
+- name: Create logs file
   ansible.builtin.file:
     path: "{{ dante_logs }}"
     state: touch
