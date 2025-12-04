@@ -4,6 +4,7 @@ dante_group: "dante"
 
 dante_config: "/etc/danted.conf"
 dante_logs: "/var/log/dante.log"
+dante_systemd_unit: "/etc/systemd/system/danted.service"
 
 dante_interface: "0.0.0.0"
 dante_port: "1080"

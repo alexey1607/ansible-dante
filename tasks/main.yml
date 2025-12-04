@@ -5,12 +5,23 @@
     update_cache: true
   tags: [Install]
 
+- name: Add config
+  ansible.builtin.template:
+    src: danted.conf.j2
+    dest: "{{ dante_config }}"
+    group: root
+    owner: root
+    mode: "644"
+  notify:
+    - Restart dante
+  tags: [Configure]
+
 - name: Create group {{ dante_group }}
   ansible.builtin.group:
     name: "{{ dante_group }}"
     system: true
     state: present
-  tags: [Install, Configure]
+  tags: [Install]
 
 - name: Create user {{ dante_user }}
   ansible.builtin.user:
@@ -19,7 +30,7 @@
     shell: "/usr/sbin/nologin"
     group: "{{ dante_group }}"
     create_home: false
-  tags: [Install, Configure]
+  tags: [Install]
 
 - name: Create logs file
   ansible.builtin.file:
@@ -30,7 +41,7 @@
     mode: "0755"
     access_time: preserve
     modification_time: preserve
-  tags: [Install, Configure]
+  tags: [Install]
 
 - name: Add config
   ansible.builtin.template:
@@ -39,9 +50,9 @@
     group: "{{ dante_group }}"
     owner: "{{ dante_user }}"
     mode: "644"
-  tags: [Configure]
   notify:
     - Restart dante
+  tags: [Configure]
 
 - name: Enable dante systemd service
   ansible.builtin.systemd:
