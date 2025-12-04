@@ -21,13 +21,15 @@
     create_home: false
   tags: [Install, Configure]
 
-- name: Create logs file
+- name: Create logs file (idempotent)
   ansible.builtin.file:
     path: "{{ dante_logs }}"
     state: touch
     owner: "{{ dante_user }}"
     group: "{{ dante_group }}"
-    mode: "755"
+    mode: "0755"
+    access_time: preserve
+    modification_time: preserve
   tags: [Install, Configure]
 
 - name: Add config
