@@ -1,6 +1,10 @@
-ansible-core
 ansible
-pytest
-testinfra
-molecule "molecule-plugins[docker]"
+ansible-lint
 docker
+molecule
+molecule-plugins[docker]
+pytest
+pytest
+pytest-testinfra
+testinfra
+yamllint
