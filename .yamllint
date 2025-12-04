@@ -8,6 +8,16 @@ rules:
   line-length: enable
   truthy:
     check-keys: false
+  comments:
+    min-spaces-from-content: 1
+  indentation:
+    indent-sequences: true
+    check-multi-line-strings: false
+  trailing-spaces: enable
+  new-line-at-end-of-file: enable
 
 ignore:
   - .venv
+  - .molecule
+  - .git
+  - .cache

@@ -7,3 +7,9 @@ exclude_paths:
   - .cache
   - .github
   - .vscode
+  - .molecule
+  - .venv
+  - .git
+  # - .pre-commit-config.yaml
+  # - .ansible-lint
+  # - .yamllint
