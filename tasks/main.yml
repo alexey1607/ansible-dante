@@ -50,6 +50,8 @@
     group: "{{ dante_group }}"
     owner: "{{ dante_user }}"
     mode: "644"
+    access_time: preserve
+    modification_time: preserve
   notify:
     - Restart dante
   tags: [Configure]
