@@ -5,17 +5,6 @@
     update_cache: true
   tags: [Install]
 
-- name: Add config
-  ansible.builtin.template:
-    src: danted.conf.j2
-    dest: "{{ dante_config }}"
-    group: root
-    owner: root
-    mode: "644"
-  notify:
-    - Restart dante
-  tags: [Configure]
-
 - name: Create group {{ dante_group }}
   ansible.builtin.group:
     name: "{{ dante_group }}"
@@ -50,8 +39,6 @@
     group: "{{ dante_group }}"
     owner: "{{ dante_user }}"
     mode: "644"
-    access_time: preserve
-    modification_time: preserve
   notify:
     - Restart dante
   tags: [Configure]
