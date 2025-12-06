@@ -31,7 +31,7 @@
           - "'danted.service' in ansible_facts.services"
         fail_msg: "danted.service not found"
         success_msg: "danted.service found"
-    
+
     - name: Ensure danted.service enabled
       ansible.builtin.assert:
         that:
@@ -56,7 +56,7 @@
       loop_control:
         label: "{{ item.name }}"
       register: proxy_results
-      ignore_errors: yes
+      ignore_errors: true
 
     - name: Check SOCKS5 connect
       ansible.builtin.assert:
