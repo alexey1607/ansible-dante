@@ -24,8 +24,3 @@ jobs:
           cd $GITHUB_WORKSPACE
           export MOLECULE_DEBUG=true
           molecule test
-
-      - name: Push Ansible Galaxy Role
-        uses: ansible-actions/ansible-galaxy-action@v1.2.0
-        with:
-          galaxy_api_key: ${{ secrets.ANSIBLE_GALAXY_API_TOKEN }}
