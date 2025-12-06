@@ -9,7 +9,7 @@ user.unprivileged: nobody
 internal: 0.0.0.0 port=1080
 
 # The proxying network interface or address.
-external: {{ ansible_default_ipv4.interface }}
+external: {{ ansible_facts["default_ipv4"]["interface"] }}
 
 # socks-rules determine what is proxied through the external interface.
 socksmethod: username
