@@ -3,6 +3,7 @@ ansible-lint
 docker
 molecule
 molecule-plugins[docker]
+passlib
 pytest
 pytest
 pytest-testinfra

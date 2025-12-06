@@ -2,7 +2,25 @@
 - name: Verify dante installation
   hosts: all
   gather_facts: false
+  vars:
+    dante_users:
+      - name: dante-user1
+        password: "{{ 'dante-password' }}"
+      - name: dante-user2
+        password: "{{ 'dante-password' }}"
+      - name: dante-user2
+        password: "{{ 'dante-password' }}"
+
   tasks:
+
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        password: "{{ item.password }}"
+        system: true
+        shell: "/usr/sbin/nologin"
+        create_home: false
+      loop: "{{ dante_users }}"
 
     - name: Gather service facts
       ansible.builtin.service_facts:
@@ -27,3 +45,24 @@
           - "ansible_facts.services['danted.service'].state == 'running'"
         fail_msg: "danted.service not running"
         success_msg: "danted.service running"
+
+    - name: Test SOCKS5 proxy for each Dante user
+      ansible.builtin.uri:
+        url: https://www.google.com
+        timeout: 10
+      environment:
+        ALL_PROXY: "socks5://{{ item.name }}:{{ item.password }}@127.0.0.1:1080"
+      loop: "{{ dante_users }}"
+      loop_control:
+        label: "{{ item.name }}"
+      register: proxy_results
+      ignore_errors: yes
+
+    - name: Check SOCKS5 connect
+      ansible.builtin.assert:
+        that:
+          - item.status is defined
+          - item.status == 200
+        fail_msg: "Users failed to connect through SOCKS5"
+        success_msg: "Users connected successfully"
+      loop: "{{ proxy_results.results }}"
