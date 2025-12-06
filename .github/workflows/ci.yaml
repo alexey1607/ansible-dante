@@ -2,9 +2,7 @@ name: Molecule Test
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [develop]
 
 jobs:
   molecule:
@@ -26,3 +24,10 @@ jobs:
           cd $GITHUB_WORKSPACE
           export MOLECULE_DEBUG=true
           molecule test
+
+      - name: Push Ansible Galaxy Role
+        uses: ansible/ansible-galaxy-action@v2
+        with:
+          args: import role
+        env:
+          ANSIBLE_GALAXY_API_TOKEN: ${{ secrets.ANSIBLE_GALAXY_API_TOKEN }}
