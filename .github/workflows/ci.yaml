@@ -26,8 +26,6 @@ jobs:
           molecule test
 
       - name: Push Ansible Galaxy Role
-        uses: ansible/ansible-galaxy-action@v2
-        with:
-          args: import role
+        uses: ansible-actions/ansible-galaxy-action@v1.2.0
         env:
           ANSIBLE_GALAXY_API_TOKEN: ${{ secrets.ANSIBLE_GALAXY_API_TOKEN }}
