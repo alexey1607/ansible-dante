@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+
+  # - repo: https://github.com/ansible/ansible-lint
+  #   rev: v24.7.0
+  #   hooks:
+  #     - id: ansible-lint
+  #       additional_dependencies:
+  #         - ansible-core>=2.16
+  #       args: ["."]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--check-only"]
+
+default_language_version:
+  python: python3

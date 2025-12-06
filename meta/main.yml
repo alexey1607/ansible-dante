@@ -1,9 +1,14 @@
----
 galaxy_info:
-  author: alexey1607
-  description: Install dante
-  company: alexey1607
-  license: license GPL-2.0
-  min_ansible_version: "2.1"
-  galaxy_tags: [proxy, dante, socks, socks4, socks5]
+  author: Alexey
+  description: Installs and configures Dante proxy server
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Debian
+      versions:
+        - 12
+  galaxy_tags:
+    - dante
+    - socks5
+    - proxy
 dependencies: []

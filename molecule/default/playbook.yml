@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - ansible-dante
+    - molecule/default/playbook.yml

@@ -1,0 +1,9 @@
+---
+- name: Create users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    system: true
+    shell: "/usr/sbin/nologin"
+    create_home: false
+  loop: "{{ dante_users }}"
+  tags: [add_users]

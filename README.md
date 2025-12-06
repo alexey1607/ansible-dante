@@ -1,66 +1,49 @@
-Dante
-=========
+# ansible-dante
 
-Dante socks proxy server https://www.inet.no/dante/
+Ansible‑роль для установки и базовой настройки Dante socks proxy server на Debian‑подобных системах.
 
-Installation
---------------
+Документация Dante socks proxy server https://www.inet.no/dante/
+
+## Назначение
+
+Эта роль позволяет:
+- ходить в телегу через проксю
+
+## Поддерживаемые ОС
+
+- Debian 12
+
+## Переменные роли
+
+./defaults/main.yml
+
+| Переменная            | Значение по‑умолчанию               | Описание                           |
+|-----------------------|-------------------------------------|------------------------------------|
+| `dante_config`        | `/etc/danted.conf`                  | путь к конфигу                     |
+| `dante_logs`          | `/var/log/danted`                   | путь к директории с логами         |
+| `dante_systemd_unit`  | `/lib/systemd/system/danted.service`| путь к systemd юниту               |
+| `dante_interface`     | `0.0.0.0`                           | интерфейс на котором раотает dante |
+| `dante_port`          | `1080`                              | порт, на котором слушает Dante     |
+| `dante_users`         | `[]`                                | списко пользователей для прокси.   |
+
+
+## Пример использования
+
+Пример запуска плэйбука
 
 ```yaml
-- src: git@github.com:alexey1607/ansible-dante.git
-  scm: git
-  version: master
-  name: dante
-```
-
-Role Variables
---------------
-### dante_user
-- Dante user
-- Default value: *dante*
-
-### dante_group
-- Dante group
-- Default value: *dante*
-
-### dante_config
-- Dante config path
-- Default value: */etc/danted.conf*
-
-### dante_logs
-- Dante logs path
-- Default value: */var/log/dante.log*
-
-### dante_interface
-- Dante interface
-- Default value: *0.0.0.0*
-
-### dante_port
-- Dante port
-- Default value: *1080*
-
-Requirements
-------------
-* Debian
-  - 9 (stretch)
-  - 10 (buster)
-  - 11 (bullseye)
-
-Example Playbook
-----------------
-```
-- name: Install dante-server
-  hosts: helsinki
+---
+- name: Converge
+  hosts: dante-server
   roles:
-    - dante
-```
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-Alexey1607
+    - role: ansible-dante
+      vars:
+        dante_config: "/etc/danted.conf"
+        dante_logs: "/var/log/danted"
+        dante_systemd_unit: "/lib/systemd/system/danted.service"
+        dante_interface: "0.0.0.0"
+        dante_port: "1080"
+        dante_users:
+          - dante
+          - dante-user1
+          - dante-user2

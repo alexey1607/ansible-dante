@@ -1,9 +1,9 @@
 ---
-dante_user: "dante"
-dante_group: "dante"
-
 dante_config: "/etc/danted.conf"
-dante_logs: "/var/log/dante.log"
+dante_logs: "/var/log/danted"
+dante_systemd_unit: "/lib/systemd/system/danted.service"
 
 dante_interface: "0.0.0.0"
 dante_port: "1080"
+
+dante_users: []

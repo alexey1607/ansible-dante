@@ -1,0 +1,28 @@
+name: Molecule Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Molecule tests
+        run: |
+          cd $GITHUB_WORKSPACE
+          export MOLECULE_DEBUG=true
+          molecule test
