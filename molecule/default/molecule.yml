@@ -1,10 +1,4 @@
 ---
-
-lint: |
-  set -e
-  yamllint .
-  ansible-lint .
-
 driver:
   name: docker
 
@@ -27,6 +21,11 @@ provisioner:
       remote_tmp: /tmp/.ansible/tmp
   playbooks:
     converge: converge.yml
+
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
 
 verifier:
   name: ansible

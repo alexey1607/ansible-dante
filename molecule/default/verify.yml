@@ -13,3 +13,17 @@
           - "'danted.service' in ansible_facts.services"
         fail_msg: "danted.service not found"
         success_msg: "danted.service found"
+    
+    - name: Ensure danted.service enabled
+      ansible.builtin.assert:
+        that:
+          - "ansible_facts.services['danted.service'].status == 'enabled'"
+        fail_msg: "danted.service not enabled"
+        success_msg: "danted.service enabled"
+
+    - name: Ensure danted.service running
+      ansible.builtin.assert:
+        that:
+          - "ansible_facts.services['danted.service'].state == 'running'"
+        fail_msg: "danted.service not running"
+        success_msg: "danted.service running"

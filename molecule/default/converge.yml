@@ -4,3 +4,9 @@
   gather_facts: true
   roles:
     - ../../../
+  vars:
+    dante_users:
+      - dante
+      - dante1
+      - dante2
+      - dante3
